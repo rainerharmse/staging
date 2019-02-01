@@ -1,16 +1,16 @@
+import Vue from 'vue';
 import axios from '../../axios-auth';
 import axiosFire from '../../firebase';
-// import { VueAuthenticate } from 'vue-authenticate'
+import { VueAuthenticate } from 'vue-authenticate'
 import routes from '../../routes';
 
-// const vueAuth = new VueAuthenticate(Vue.prototype.$http, {
-//     baseUrl: 'http://localhost:4000',
-//     providers: {
-//         google: {
-//           clientId: process.env.VUE_APP_GOOGLE_APP_ID,
-//         }
-//       }
-// })
+const vueAuth = new VueAuthenticate(Vue.prototype.$http, {
+    providers: {
+        google: {
+          clientId: process.env.VUE_APP_GOOGLE_APP_ID,
+        }
+      }
+})
 
 const state = {
     idToken: null,
@@ -144,6 +144,20 @@ const actions = {
                 console.log(error)
             })
     },
+    providerAuth ({ commit }, provider) {
+		return new Promise((resolve, reject) => {
+			vueAuth.authenticate(provider)
+			.then(authResponse => {
+                console.log('google authenticated')
+                console(authResponse)
+				resolve(authResponse)
+			})
+			.catch(error => {
+				console.log('Trying to catch the error!!')
+				reject(error)
+			})
+		})
+	},
 }
 
 const getters = {
@@ -156,7 +170,7 @@ const getters = {
 }
 
 export default {
-    // vueAuth,
+    vueAuth,
     state,
     mutations,
     actions,
