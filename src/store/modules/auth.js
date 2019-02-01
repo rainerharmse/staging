@@ -1,16 +1,16 @@
 import axios from '../../axios-auth';
 import axiosFire from '../../firebase';
-import { VueAuthenticate } from 'vue-authenticate'
+// import { VueAuthenticate } from 'vue-authenticate'
 import routes from '../../routes';
 
-const vueAuth = new VueAuthenticate(Vue.prototype.$http, {
-    baseUrl: 'http://localhost:4000',
-    providers: {
-        google: {
-          clientId: process.env.VUE_APP_GOOGLE_APP_ID,
-        }
-      }
-})
+// const vueAuth = new VueAuthenticate(Vue.prototype.$http, {
+//     baseUrl: 'http://localhost:4000',
+//     providers: {
+//         google: {
+//           clientId: process.env.VUE_APP_GOOGLE_APP_ID,
+//         }
+//       }
+// })
 
 const state = {
     idToken: null,
@@ -156,7 +156,7 @@ const getters = {
 }
 
 export default {
-    vueAuth,
+    // vueAuth,
     state,
     mutations,
     actions,
