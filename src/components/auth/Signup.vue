@@ -108,15 +108,10 @@
         this.$store.dispatch('signup', formData)
       },
       authenticate: function (provider) {
-        this.$auth.authenticate(provider)
-          .then((res) => {
-            // Execute application logic after successful social authentication
-            console.log('succesful google auth')
-            console.log(res)
-          })
-          .catch(err => {
-            console.log(error)
-          })
+        this.$store.dispatch('providerAuth', provider)
+					.then(() => {
+						console.log('dispatched to providerAuth')
+					})
       }
 
     }

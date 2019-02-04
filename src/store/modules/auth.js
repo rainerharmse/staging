@@ -4,7 +4,7 @@ import axiosFire from '../../firebase';
 import { VueAuthenticate } from 'vue-authenticate'
 import routes from '../../routes';
 
-const vueAuth = new VueAuthenticate(Vue.prototype.$http, {
+const vueAuth = new VueAuthenticate(axios, {
     providers: {
         google: {
           clientId: process.env.VUE_APP_GOOGLE_APP_ID,
@@ -145,6 +145,7 @@ const actions = {
             })
     },
     providerAuth ({ commit }, provider) {
+        console.log('in providerAuth')
 		return new Promise((resolve, reject) => {
 			vueAuth.authenticate(provider)
 			.then(authResponse => {
