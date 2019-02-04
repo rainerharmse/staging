@@ -7,7 +7,7 @@ import routes from '../../routes';
 const vueAuth = new VueAuthenticate(axios, {
     providers: {
         google: {
-          clientId: process.env.VUE_APP_GOOGLE_APP_ID,
+          clientId: "58312943934-pqu465g2o8u9bll6dvr4guhga1reolom.apps.googleusercontent.com",
         }
       }
 })
